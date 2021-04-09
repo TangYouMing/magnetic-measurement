@@ -1192,6 +1192,16 @@ namespace MagneticRuler
             if (btn_SerialOpen.Text == "打开" || btn_SerialOpen.Text == "Open")
                 SerialOpen();
 
+            if (!serialPort1.IsOpen)
+            {
+                if (Language.Text == "EN")
+                    MessageBox.Show("串口未打开，写入结束！");
+                else
+                    MessageBox.Show("Serial port not open, modify end!");
+
+                return;
+            }
+
             MyPara.Modbus.Send.WriteCmd = WriteCmd;
             GetCmd();
 
